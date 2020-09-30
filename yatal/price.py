@@ -1,18 +1,26 @@
 import numpy as np
 
-from .core import rolling_func, offset, divide, replace_nan
+from core import rolling_func, offset, divide, replace_nan
+
+
+def rolling_change(price, window=1):
+    return offset(price[window:] / price[:-window], window)
+
+
+def rolling_diff(series, window=1):
+    return offset(series[window:] / series[:-window], window)
+
+
+def rolling_max(series, window=20):
+    return rolling_func(series, window, [np.max])[0]
+
+
+def rolling_min(series, window=20):
+    return rolling_func(series, window, [np.min])[0]
 
 
 def true_price(high, low, close):
     return (high + low + close) / 3
-
-
-def change(price, window=1):
-    return offset(price[window:] / price[:-window], window)
-
-
-def diff(series, window=1):
-    return offset(series[window:] / series[:-window], window)
 
 
 def aroon(high, low, window=20):
@@ -51,3 +59,8 @@ def vortex_index(high, low, close, window=20):
     vi_plus[:window] = np.nan
     vi_minus[:window] = np.nan
     return replace_nan(vi_plus), replace_nan(vi_minus)
+
+
+def roc(series, widnow=20):
+    return offset(
+        rolling_diff(series, window)[widnow:] / series[:-widnow], window)

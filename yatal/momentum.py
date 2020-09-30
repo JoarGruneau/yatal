@@ -1,7 +1,7 @@
 import numpy as np
 
-from .core import rolling_func, offset, _ema, divide, replace_nan
-from .price import change, true_price
+from core import rolling_func, offset, _ema, divide, replace_nan
+from price import rolling_change, true_price
 
 
 def sma(series, window=20):
@@ -34,7 +34,7 @@ def macd(price, macd_fast=12, macd_slow=26, signal_period=9):
 
 
 def rsi(price, window=20):
-    gain = change(price) - 1
+    gain = rolling_change(price) - 1
     gain[np.isnan(gain)] = 0
     loss = -gain.copy()
     gain[gain <= 0] = 0

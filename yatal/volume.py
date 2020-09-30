@@ -1,6 +1,6 @@
 import numpy as np
 
-from .core import rolling_func, divide, replace_nan
+from core import rolling_func, divide, replace_nan
 
 
 def obv(price, volume):
@@ -16,3 +16,9 @@ def vwma(price, volume, window=20):
     price_volume = rolling_func(price * volume, window, [np.sum])[0]
     vwma = divide(price_volume, volume_sum)
     return replace_nan(vwma)
+
+
+def adl(high, low, close, volume):
+    flow = divide(2 * close - high - low, high - low) * volume
+    flow[np.isnan(flow)] = 0
+    return np.cumsum(flow)
