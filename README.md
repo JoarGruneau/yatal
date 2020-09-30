@@ -18,6 +18,6 @@ Accumalution/Distrubution Line
 True Price
 Aroon Indicator  
 Bollinger Bands  
-Bollinger Bands Oscillator
+Bollinger Bands Oscillator  
 Vortex Index  
 Rate of Change  
