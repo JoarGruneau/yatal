@@ -4,7 +4,7 @@ High-performance technical analysis library in pure python
 
 ## Momentum indicators
 Simple Moving Average  
-Exponential Moving Average  
+Exponential Moving Average    
 Commodity Channel Index  
 Moving Average Convergence Divergence  
 Relative Strength Index  
@@ -15,7 +15,7 @@ On Balance Volume
 Accumalution/Distrubution Line    
 
 ## Price indicators
-True Price
+True Price  
 Aroon Indicator  
 Bollinger Bands  
 Bollinger Bands Oscillator  
